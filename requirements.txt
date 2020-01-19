@@ -1,0 +1,8 @@
+//pyslack
+slackclient>=2.0.0
+certifi
+pandas
+psycopg2
+sqlalchemy
+matplotlib
+sqlalchemy_utils
