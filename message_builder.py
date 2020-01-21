@@ -12,13 +12,8 @@ class Statistics:
                 "channel": self.channel,
                 "username": self.username,
                 "icon_emoji": self.icon_emoji,
-                "text": statistics,
-                    "attachments": [
-                        {
-                            "fallback": "Statistics",
-                            "image_url": plot
-                        }
-                    ]
+                "text": statistics.to_json(orient='records')
+
 
                 }
 

@@ -13,7 +13,8 @@ def configure_message(web_client: slack.WebClient, user_id: str, channel: str, d
     message_builder = Statistics(channel)
 
     # Get the onboarding message payload
-    message = message_builder.get_message_payload()
+    # message = message_builder.get_message_payload()
+    message = message_builder.get_message_payload(data_frame, plot)
 
     # Post the onboarding message in Slack
     response = web_client.chat_postMessage(**message)
