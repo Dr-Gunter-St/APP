@@ -1,8 +1,14 @@
 import os
+
 import slack
+
+import statistics as st
 from message_builder import Statistics
 
-def configure_message(web_client: slack.WebClient, user_id: str, channel: str):
+data_frame = 0
+plot = 0
+
+def configure_message(web_client: slack.WebClient, user_id: str, channel: str, data_frame, plot):
     # Create a new onboarding tutorial.
     message_builder = Statistics(channel)
 
@@ -34,9 +40,10 @@ def message(**payload):
 
     if text and text.lower() == "start":
         new_web_client.chat_delete(channel=channel_id, ts=ts)
-        return configure_message(web_client, user_id, channel_id)
+        return configure_message(web_client, user_id, channel_id, data_frame, plot)
 
 if __name__ == "__main__":
+    data_frame, plot = st.gather_stat()
     slack_token = os.environ["SLACK_BOT_TOKEN"]
     auth_token = os.environ["AUTH_TOKEN"]
     new_web_client = slack.WebClient(token=auth_token)

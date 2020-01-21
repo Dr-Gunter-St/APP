@@ -6,14 +6,26 @@ class Statistics:
         self.icon_emoji = ":robot_face:"
         self.timestamp = ""
 
-    def get_message_payload(self):
+    def get_message_payload(self, statistics, plot):
         return {
                 "ts": self.timestamp,
                 "channel": self.channel,
                 "username": self.username,
                 "icon_emoji": self.icon_emoji,
-                "text": "Would you like to play a game?",
-                "attachments": [
+                "text": statistics,
+                    "attachments": [
+                        {
+                            "fallback": "Statistics",
+                            "image_url": plot
+                        }
+                    ]
+
+                }
+
+
+"""                "attachments": [
+
+
                     {
                         "text": "Choose a game to play",
                         "fallback": "You are unable to choose a game",
@@ -49,7 +61,5 @@ class Statistics:
                         ]
                     }
                 ]
-            }
-
-
+"""
 
